@@ -20,7 +20,8 @@ export function App(): ReactElement {
         case 'toggleStatus':
           return prevTodos.map(todo =>
             todo.id === id ? {...todo, isDone: !todo.isDone} : todo
-          );
+          )
+          .sort((a, b) => Number(a.isDone) - Number(b.isDone))
         case 'remove':
           return prevTodos.filter(todo => todo.id !== id);
         default:
