@@ -19,7 +19,7 @@ export default function ToDo( {todo, handleToDoAction}: IToDoProps): ReactElemen
   }
 
   return (
-      <article className={styles.todo}>
+      <article className={`${styles.todo} ${todo.isDone ? styles.completed : styles.notCompleted}`}> 
         <div className={styles.todoTitleAndClose}>
           <h2 className={styles.todoTitle}>ToDo: {title}</h2>
           <span className={`material-symbols-outlined ${styles.deleteIcon}`} onClick={handleRemoval}>

@@ -52,11 +52,21 @@
 }
 
 .completed {
-  color: #4caf50; 
+  color: #6c757d;
 }
 
+.completed h2 {
+  text-decoration: line-through;
+}
+
+.completed .checkboxIcon:hover {
+  color: red;
+}
+
+
+
 .notCompleted {
-  color: #f44336; 
+  
 }
 
 
