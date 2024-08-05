@@ -10,7 +10,7 @@ export default function ToDo( {todo}: IToDoProps): ReactElement {
   return (
     <>
       <p>Todo: {title}</p>
-      <p>IsDone: {isDone ? "Done" : "NotDone"}</p>
+      <p>Status: {isDone ? "Done" : "Not Done"}</p>
     </>
   )
 }
