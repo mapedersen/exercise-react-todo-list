@@ -5,9 +5,10 @@ import styles from "../css/ToDoList.module.css";
 
 interface IToDoListProps {
   todos: IToDo[];
+  onStatusChange: (targetId: string) => void;
 };
 
-export default function ToDoList( { todos }: IToDoListProps ): ReactElement {
+export default function ToDoList( { todos, onStatusChange }: IToDoListProps ): ReactElement {
   return (
     <section className={styles.todoListContainer}>
       <header className={styles.todoListHeader}>
@@ -16,7 +17,7 @@ export default function ToDoList( { todos }: IToDoListProps ): ReactElement {
       <ul className={styles.todoList}>
         {todos.map(todo => (
           <li className={styles.todoItem} key={todo.title}>
-            <ToDo todo={todo} />
+            <ToDo todo={todo} onStatusChange={onStatusChange}/>
           </li>
         ))}
       </ul>

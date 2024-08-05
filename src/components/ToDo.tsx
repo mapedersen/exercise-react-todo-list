@@ -1,17 +1,17 @@
-import { ReactElement, useState } from "react";
+import { ReactElement } from "react";
 import { IToDo } from "../interfaces";
 import styles from "../css/ToDo.module.css";
 
 interface IToDoProps {
   todo: IToDo;
+  onStatusChange: (targetId: string) => void;
 }
 
-export default function ToDo( {todo}: IToDoProps): ReactElement {
-  const [isDone, setIsDone] = useState<boolean>(false)
-  const { title } = todo;
+export default function ToDo( {todo, onStatusChange}: IToDoProps): ReactElement {
+  const { id, title, isDone } = todo;
 
   const handleOnClick = (): void => {
-    isDone ? setIsDone(false) : setIsDone(true); 
+    onStatusChange(id); 
   }
 
   return (
