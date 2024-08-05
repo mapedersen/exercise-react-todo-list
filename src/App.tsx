@@ -1,7 +1,10 @@
+import ToDoList from "./components/ToDoList";
+import { ToDos } from "./data";
+
 export function App() {
   return (
     <>
-      <h1>This is the App component</h1>
+      <ToDoList value={ToDos}/>
     </>
   );
 }
