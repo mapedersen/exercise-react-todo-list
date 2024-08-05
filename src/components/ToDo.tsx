@@ -1,6 +1,6 @@
 import { ReactElement } from "react";
 import { IToDo } from "../interfaces";
-import styles from "./ToDo.module.css";
+import styles from "../css/ToDo.module.css";
 
 interface IToDoProps {
   todo: IToDo;
