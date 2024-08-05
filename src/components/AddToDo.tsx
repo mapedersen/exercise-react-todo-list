@@ -1,4 +1,5 @@
 import { ReactElement, useState } from "react";
+import styles from "../css/AddToDo.module.css"
 
 interface IAddToDoProps {
   onAddToDo: (newTodo: string) => void;
@@ -22,19 +23,18 @@ export default function AddToDo( {onAddToDo}: IAddToDoProps ): ReactElement {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
-      <fieldset>
+    <form onSubmit={handleSubmit} id="form" >
+      <fieldset className={styles.todoFieldset}>
         <legend>Add a new ToDo</legend>
-        <label htmlFor="todoTitle">ToDo</label>
         <input 
           type="text" 
-          id="todoTitle"
+          className={styles.todoTitleInput}
           name="title"
           value={todoTitle}
           onChange={(e) => handleTitleChange(e)}
           required
         />
-        <button type="submit">Add ToDo</button>
+        <button className={styles.addTodoButton} type="submit">Add ToDo</button>
       </fieldset>
     </form>
   )

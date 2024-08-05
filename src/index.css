@@ -7,7 +7,6 @@
   box-sizing: border-box;
 }
 
-/* Setting Inter Font */
 body {
   font-family: 'Inter', sans-serif;
   line-height: 1.6;
@@ -15,6 +14,10 @@ body {
   background-color: #f7f7f7;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 /* Additional Reset */
