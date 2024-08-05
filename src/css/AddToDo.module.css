@@ -1,20 +1,36 @@
-.todo-fieldset {
+.todoFieldset {
   border: 1px solid #ccc;
   padding: 20px;
   border-radius: 5px;
+  display: flex;
+  flex-direction: column;
 }
 
-.add-todo-button {
-  margin-left: 5px;
-  padding-left: 5px;
-  padding-right: 5px;
+.addTodoButton {
+  margin-top: 15px;
+  padding: 5px;
   border: 1px solid #ccc;
   border-radius: 5px;
 }
 
-.todo-title-input {
+.addTodoButton:hover {
+  cursor: pointer;
+  color: green;
+}
+
+.todoInput {
   border: 1px solid #ccc;
   border-radius: 5px;
   padding: 2px;
+}
+
+.formLabel {
+  font-size: 0.9rem;
+}
+
+.inputWrapper {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
 }
 

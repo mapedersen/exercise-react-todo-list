@@ -10,9 +10,16 @@ import "./app.css"
 export function App(): ReactElement {
   const [todos, setToDos] = useState<IToDo[]>(ToDos);
 
-  const handleAddToDo = (todoTitle: string) => {
-    setToDos(prevTodos => [...prevTodos, {id: uuid4(), title: todoTitle, isDone: false}])
-  }
+  const handleAddToDo = (todoTitle: string, todoOwner: string) => {
+    const newToDo: IToDo = {
+      creationDate: new Date(),
+      owner: todoOwner,
+      id: uuid4(),
+      title: todoTitle,
+      isDone: false,
+    };
+    setToDos(prevTodos => [...prevTodos, newToDo])
+  };
 
   const handleToDoAction = (id: string, action: string) => {
     setToDos(prevTodos => {

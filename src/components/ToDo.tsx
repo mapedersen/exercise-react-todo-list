@@ -8,7 +8,7 @@ interface IToDoProps {
 }
 
 export default function ToDo( {todo, handleToDoAction}: IToDoProps): ReactElement {
-  const { id, title, isDone } = todo;
+  const { creationDate, owner, id, title, isDone } = todo;
 
   const handleStatusUpdate = (): void => {
     handleToDoAction(id, "toggleStatus"); 
@@ -26,6 +26,8 @@ export default function ToDo( {todo, handleToDoAction}: IToDoProps): ReactElemen
             close
           </span>
         </div>
+        <p className={styles.todoOwner}>Owner: {owner}</p>
+        <p className={styles.todoCreationDate}>Created at: {creationDate.toLocaleDateString()}</p>
         <div className={styles.todoStatusAndControl}>
           <span className={`material-symbols-outlined ${styles.checkboxIcon}`} onClick={handleStatusUpdate}>
               {isDone ? 'check_box' : 'check_box_outline_blank'}

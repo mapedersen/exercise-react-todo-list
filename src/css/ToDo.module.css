@@ -10,7 +10,6 @@
 
 .todoTitle {
   font-size: 1.2em;
-  margin-bottom: 5px;
 }
 
 .todoTitleAndClose {
@@ -23,7 +22,20 @@
   color: #555;
 }
 
-.todo-status-and-control {
+.todoOwner {
+  margin-top: -2px;
+  font-size: 0.em;
+  color: #555;
+}
+
+.todoCreationDate {
+  margin-top: -2px;
+  font-size: 0.8em;
+  color: #555;
+  margin-bottom: 5px;
+}
+
+.todoStatusAndControl {
   display: flex;
   align-items: center;
   gap: 5px;
@@ -61,12 +73,6 @@
 
 .completed .checkboxIcon:hover {
   color: red;
-}
-
-
-
-.notCompleted {
-  
 }
 
 
