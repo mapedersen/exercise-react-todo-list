@@ -13,6 +13,11 @@
   margin-bottom: 5px;
 }
 
+.todoTitleAndClose {
+  display: flex;
+  justify-content: space-between;
+}
+
 .todoStatus {
   font-size: 0.9em;
   color: #555;
@@ -20,7 +25,8 @@
 
 .todo-status-and-control {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  gap: 5px;
 }
 
 .checkboxIcon {
@@ -32,12 +38,25 @@
   color: #4caf50;
 }
 
+.deleteIcon {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.deleteIcon:hover {
+  color: red;
+}
+
+.checkboxIcon:hover {
+  color: #4caf50;
+}
+
 .completed {
-  color: #4caf50; /* Green color for completed */
+  color: #4caf50; 
 }
 
 .notCompleted {
-  color: #f44336; /* Red color for not completed */
+  color: #f44336; 
 }
 
 

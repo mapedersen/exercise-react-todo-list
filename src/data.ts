@@ -7,7 +7,7 @@ export const ToDos:IToDo[] = [
     isDone: false,
   },
   {
-    id: "25d6d5cf-0c6b-4930-91e9-485812397bbf",
+    id: "8ceb6adc-ed63-445f-95bf-c4dce0d0c02f",
     title: "Laundry",
     isDone: false
   }

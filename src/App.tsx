@@ -14,22 +14,25 @@ export function App(): ReactElement {
     setToDos(prevTodos => [...prevTodos, {id: uuid4(), title: todoTitle, isDone: false}])
   }
 
-  // const handleRemoveTodo = (todo.id: string) => {
-  //   // Remove Todo
-  // }
-
-  const handleStatusChangeToDo = (targetId: string): void => {
-    setToDos(prevTodos =>
-      prevTodos.map(todo =>
-        todo.id === targetId ? {...todo, isDone: !todo.isDone} : todo
-      )
-    );
+  const handleToDoAction = (id: string, action: string) => {
+    setToDos(prevTodos => {
+      switch (action) {
+        case 'toggleStatus':
+          return prevTodos.map(todo =>
+            todo.id === id ? {...todo, isDone: !todo.isDone} : todo
+          );
+        case 'remove':
+          return prevTodos.filter(todo => todo.id !== id);
+        default:
+          return prevTodos;
+      }
+    })
   }
 
   return (
     <div className="App">
       <AddToDo onAddToDo={handleAddToDo}/>
-      <ToDoList todos={todos} onStatusChange={handleStatusChangeToDo}/>
+      <ToDoList todos={todos} handleToDoAction={handleToDoAction}/>
     </div>
   );
 }

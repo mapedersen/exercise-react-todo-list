@@ -4,26 +4,33 @@ import styles from "../css/ToDo.module.css";
 
 interface IToDoProps {
   todo: IToDo;
-  onStatusChange: (targetId: string) => void;
+  handleToDoAction: (id: string, action: string) => void;
 }
 
-export default function ToDo( {todo, onStatusChange}: IToDoProps): ReactElement {
+export default function ToDo( {todo, handleToDoAction}: IToDoProps): ReactElement {
   const { id, title, isDone } = todo;
 
-  const handleOnClick = (): void => {
-    onStatusChange(id); 
+  const handleStatusUpdate = (): void => {
+    handleToDoAction(id, "toggleStatus"); 
+  }
+
+  const handleRemoval = (): void => {
+    handleToDoAction(id, "remove")
   }
 
   return (
       <article className={styles.todo}>
-        <h2 className={styles.todoTitle}>ToDo: {title}</h2>
-        <div className={styles.todoStatusAndControl}>
-          <p className={styles.todoStatus}>Status: {isDone ? "Done" : "Not Done"}</p>
-          <span className={styles.checkboxIcon}>
-            <span className="material-symbols-outlined" onClick={handleOnClick}>
-               {isDone ? 'check_box' : 'check_box_outline_blank'}
-            </span>
+        <div className={styles.todoTitleAndClose}>
+          <h2 className={styles.todoTitle}>ToDo: {title}</h2>
+          <span className={`material-symbols-outlined ${styles.deleteIcon}`} onClick={handleRemoval}>
+            close
           </span>
+        </div>
+        <div className={styles.todoStatusAndControl}>
+          <span className={`material-symbols-outlined ${styles.checkboxIcon}`} onClick={handleStatusUpdate}>
+              {isDone ? 'check_box' : 'check_box_outline_blank'}
+          </span>
+          <p className={styles.todoStatus}>Status: {isDone ? "Done" : "Not Done"}</p>
         </div>
      </article>
   )
