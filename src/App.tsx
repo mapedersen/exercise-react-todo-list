@@ -4,7 +4,7 @@ import { ToDos } from "./data";
 export function App() {
   return (
     <>
-      <ToDoList value={ToDos}/>
+      <ToDoList todos={ToDos}/>
     </>
   );
 }
