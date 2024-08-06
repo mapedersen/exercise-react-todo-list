@@ -13,10 +13,10 @@ export function App(): ReactElement {
   const handleAddToDo = (todoTitle: string, todoOwner: string) => {
     const newToDo: IToDo = {
       creationDate: new Date(),
-      owner: todoOwner,
       id: uuid4(),
-      title: todoTitle,
       isDone: false,
+      owner: todoOwner,
+      title: todoTitle,
     };
     setToDos(prevTodos => [...prevTodos, newToDo])
   };
@@ -25,10 +25,9 @@ export function App(): ReactElement {
     setToDos(prevTodos => {
       switch (action) {
         case 'toggleStatus':
-          return prevTodos.map(todo =>
-            todo.id === id ? {...todo, isDone: !todo.isDone} : todo
-          )
-          .sort((a, b) => Number(a.isDone) - Number(b.isDone))
+          return prevTodos
+            .map(todo => todo.id === id ? {...todo, isDone: !todo.isDone} : todo)
+            .sort((a, b) => Number(a.isDone) - Number(b.isDone))
         case 'remove':
           return prevTodos.filter(todo => todo.id !== id);
         default:
