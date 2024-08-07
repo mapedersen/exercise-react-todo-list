@@ -10,7 +10,7 @@ export default function ToDoList(): ReactElement {
   return (
     <section className={styles.todoListContainer}>
       <header className={styles.todoListHeader}>
-        <h1>ToDos:</h1>
+        <h2>ToDos:</h2>
       </header>
       <ul className={styles.todoList}>
         {todos.map((todo) => (
