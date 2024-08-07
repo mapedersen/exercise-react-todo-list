@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { IToDo, IToDoContext } from "../interfaces";
+import { IToDoContext } from "../interfaces";
 import ToDo from "./ToDo";
 import styles from "../css/ToDoList.module.css";
 import { useOutletContext } from "react-router-dom";
@@ -10,7 +10,7 @@ export default function ToDoList(): ReactElement {
   return (
     <section className={styles.todoListContainer}>
       <header className={styles.todoListHeader}>
-        <h1>ToDo List</h1>
+        <h1>ToDos:</h1>
       </header>
       <ul className={styles.todoList}>
         {todos.map((todo) => (

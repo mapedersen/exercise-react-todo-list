@@ -1,11 +1,13 @@
 import { ReactElement, useState } from "react";
+import { Outlet, useNavigate } from "react-router-dom";
 import uuid4 from "uuid4";
+
+import NavBar from "./components/NavBar";
+
 import { ToDos } from "./data";
 import { IToDo } from "./interfaces";
 
 import "./app.css";
-import NavBar from "./components/NavBar";
-import { Outlet, useNavigate } from "react-router-dom";
 
 export function App(): ReactElement {
   const [todos, setToDos] = useState<IToDo[]>(ToDos);
