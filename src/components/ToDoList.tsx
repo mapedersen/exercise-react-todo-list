@@ -1,26 +1,24 @@
 import { ReactElement } from "react";
-import { IToDo } from "../interfaces";
+import { IToDo, IToDoContext } from "../interfaces";
 import ToDo from "./ToDo";
 import styles from "../css/ToDoList.module.css";
+import { useOutletContext } from "react-router-dom";
 
-interface IToDoListProps {
-  todos: IToDo[];
-  handleToDoAction: (id: string, action: string) => void;
-};
+export default function ToDoList(): ReactElement {
+  const { todos, handleToDoAction } = useOutletContext<IToDoContext>();
 
-export default function ToDoList( { todos, handleToDoAction }: IToDoListProps ): ReactElement {
   return (
     <section className={styles.todoListContainer}>
       <header className={styles.todoListHeader}>
         <h1>ToDo List</h1>
       </header>
       <ul className={styles.todoList}>
-        {todos.map(todo => (
+        {todos.map((todo) => (
           <li className={styles.todoItem} key={todo.title}>
-            <ToDo todo={todo} handleToDoAction={handleToDoAction}/>
+            <ToDo todo={todo} handleToDoAction={handleToDoAction} />
           </li>
         ))}
       </ul>
     </section>
-  )
+  );
 }

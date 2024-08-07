@@ -1,40 +1,41 @@
 import { ReactElement, useState } from "react";
-import styles from "../css/AddToDo.module.css"
+import styles from "../css/AddToDo.module.css";
+import { useOutletContext } from "react-router-dom";
+import { IToDoContext } from "../interfaces";
 
-interface IAddToDoProps {
-  onAddToDo: (title: string, author: string) => void;
-}
-
-export default function AddToDo( {onAddToDo}: IAddToDoProps ): ReactElement {
-  const [formData, setFormData] = useState({title: "", owner: ""})
+export default function AddToDo(): ReactElement {
+  const { handleAddToDo } = useOutletContext<IToDoContext>();
+  const [formData, setFormData] = useState({ title: "", owner: "" });
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    onAddToDo(formData.title, formData.owner)
+    handleAddToDo(formData.title, formData.owner);
     resetTodoInput();
-  }
+  };
 
   const resetTodoInput = () => {
-    setFormData({title: "", owner: ""});
-  }
+    setFormData({ title: "", owner: "" });
+  };
 
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
-    setFormData(prevData => ({
+    setFormData((prevData) => ({
       ...prevData,
-      [name]: value
-    }))
-  }
+      [name]: value,
+    }));
+  };
 
   return (
-    <form onSubmit={handleSubmit} id="form" >
+    <form onSubmit={handleSubmit} id="form">
       <fieldset className={styles.todoFieldset}>
         <legend>Add a new ToDo</legend>
         <div className={styles.inputWrapper}>
-          <label htmlFor="titleInput" className={styles.formLabel}>ToDo</label>
-          <input 
+          <label htmlFor="titleInput" className={styles.formLabel}>
+            ToDo
+          </label>
+          <input
             id="titleInput"
-            type="text" 
+            type="text"
             className={styles.todoInput}
             name="title"
             value={formData.title}
@@ -43,10 +44,12 @@ export default function AddToDo( {onAddToDo}: IAddToDoProps ): ReactElement {
           />
         </div>
         <div className={styles.inputWrapper}>
-          <label htmlFor="ownerInput" className={styles.formLabel}>Owner</label>
-          <input 
+          <label htmlFor="ownerInput" className={styles.formLabel}>
+            Owner
+          </label>
+          <input
             id="ownerInput"
-            type="text" 
+            type="text"
             className={styles.todoInput}
             name="owner"
             value={formData.owner}
@@ -54,8 +57,10 @@ export default function AddToDo( {onAddToDo}: IAddToDoProps ): ReactElement {
             required
           />
         </div>
-        <button className={styles.addTodoButton} type="submit">Add ToDo</button>
+        <button className={styles.addTodoButton} type="submit">
+          Add ToDo
+        </button>
       </fieldset>
     </form>
-  )
+  );
 }
