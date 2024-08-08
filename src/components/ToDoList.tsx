@@ -16,7 +16,7 @@ export default function ToDoList(): ReactElement {
       </header>
       <ul className={styles.todoList}>
         {todos.map((todo) => (
-          <li className={styles.todoItem} key={todo.title}>
+          <li className={styles.todoItem} key={todo.id}>
             <ToDo todo={todo} />
           </li>
         ))}
