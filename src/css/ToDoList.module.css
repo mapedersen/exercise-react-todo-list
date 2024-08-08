@@ -1,9 +1,14 @@
 .todo-list-container {
   margin-top: 20px;
+  flex-direction: column;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
 }
 
 .todo-item {
   list-style: none;
+  width: 200px;
 }
 
 .todoListHeader {
@@ -11,4 +16,13 @@
   justify-content: space-between;
   align-items: center;
   margin-bottom: 15px;
+  width: 300px;
+}
+
+.todoList {
+  width: 800px;
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
 }

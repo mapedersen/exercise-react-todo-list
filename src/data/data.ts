@@ -1,6 +1,6 @@
-import { IToDo } from "./interfaces";
+import { IToDo } from "../interfaces/interfaces";
 
-export const ToDos:IToDo[] = [
+export const ToDos: IToDo[] = [
   {
     creationDate: new Date("2024-05-12"),
     owner: "Marcus",
@@ -13,6 +13,6 @@ export const ToDos:IToDo[] = [
     owner: "Marcus",
     id: "8ceb6adc-ed63-445f-95bf-c4dce0d0c02f",
     title: "Laundry",
-    isDone: false
-  }
-]
+    isDone: false,
+  },
+];

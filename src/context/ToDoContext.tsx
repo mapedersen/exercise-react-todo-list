@@ -34,10 +34,10 @@ export function ToDoProvider({ children }: IToDoProviderProps): ReactElement {
   };
 
   const toggleStatus = (id: string) => {
-    setToDos((prevTodos) =>
-      prevTodos
-        .map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo))
-        .sort((a, b) => Number(a.isDone) - Number(b.isDone))
+    setToDos(
+      (prevTodos) =>
+        prevTodos.map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo))
+      // .sort((a, b) => Number(a.isDone) - Number(b.isDone))
     );
   };
 
