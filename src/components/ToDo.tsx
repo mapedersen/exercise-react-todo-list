@@ -33,7 +33,10 @@ export default function ToDo({ todo, handleToDoAction }: IToDoProps): ReactEleme
           </span>
           <p className={styles.todoStatus}>Status: {isDone ? "Done" : "Not Done"}</p>
         </div>
-        <span className="material-symbols-outlined" onClick={() => handleToDoAction(id, "edit")}>
+        <span
+          className={`material-symbols-outlined ${styles.editIcon}`}
+          onClick={() => handleToDoAction(id, "edit")}
+        >
           edit
         </span>
       </div>

@@ -31,13 +31,13 @@
 
 .todoOwner {
   margin-top: -2px;
-  font-size: 0em;
+  font-size: 0.8em;
   color: #555;
 }
 
 .todoCreationDate {
   margin-top: -2px;
-  font-size: 0.8em;
+  font-size: 0.7em;
   color: #555;
   margin-bottom: 10px;
 }
@@ -87,4 +87,9 @@
 
 .completed .checkboxIcon:hover {
   color: red;
+}
+
+.editIcon:hover {
+  cursor: pointer;
+  color: orange;
 }

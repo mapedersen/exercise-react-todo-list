@@ -11,6 +11,7 @@ export default function ToDoList(): ReactElement {
     <section className={styles.todoListContainer}>
       <header className={styles.todoListHeader}>
         <h2>ToDos:</h2>
+        <span className="material-symbols-outlined">filter_list</span>
       </header>
       <ul className={styles.todoList}>
         {todos.map((todo) => (
