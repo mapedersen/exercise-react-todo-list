@@ -26,21 +26,17 @@ export function ToDoProvider({ children }: IToDoProviderProps): ReactElement {
 
     setToDos((prevTodos) => {
       const updatedTodos = [...prevTodos, newToDo];
-      return updatedTodos.sort((a, b) => {
-        if (Number(a.isDone) !== Number(b.isDone)) {
-          return Number(a.isDone) - Number(b.isDone);
-        }
-        return b.creationDate.getTime() - a.creationDate.getTime();
-      });
+      return sortTodos(updatedTodos);
     });
   };
 
   const toggleStatus = (id: string) => {
-    setToDos(
-      (prevTodos) =>
-        prevTodos.map((todo) => (todo.id === id ? { ...todo, isDone: !todo.isDone } : todo))
-      // .sort((a, b) => Number(a.isDone) - Number(b.isDone))
-    );
+    setToDos((prevTodos) => {
+      const updatedTodos = prevTodos.map((todo) =>
+        todo.id === id ? { ...todo, isDone: !todo.isDone } : todo
+      );
+      return sortTodos(updatedTodos);
+    });
   };
 
   const removeTodo = (id: string) => {
@@ -52,6 +48,15 @@ export function ToDoProvider({ children }: IToDoProviderProps): ReactElement {
     setToDos((prevTodos) =>
       prevTodos.map((todo) => (todo.id === id ? { ...todo, ...updatedData } : todo))
     );
+  };
+
+  const sortTodos = (todos: IToDo[]): IToDo[] => {
+    return todos.sort((a, b) => {
+      if (Number(a.isDone) !== Number(b.isDone)) {
+        return Number(a.isDone) - Number(b.isDone);
+      }
+      return b.creationDate.getTime() - a.creationDate.getTime();
+    });
   };
 
   const contextValue: IToDoContext = {
