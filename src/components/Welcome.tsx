@@ -1,10 +1,10 @@
-import { ReactElement } from "react";
+import { ReactElement, useContext } from "react";
 import styles from "../css/Welcome.module.css";
-import { useOutletContext } from "react-router-dom";
 import { IToDoContext } from "../interfaces/interfaces";
+import { ToDoContext } from "../context/ToDoContext";
 
 export function Welcome(): ReactElement {
-  const { todos } = useOutletContext<IToDoContext>();
+  const { todos } = useContext(ToDoContext) as IToDoContext;
 
   return (
     <div className={styles.About}>

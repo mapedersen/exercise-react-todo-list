@@ -1,13 +1,14 @@
-import { ReactElement } from "react";
-import { IToDo } from "../interfaces/interfaces";
+import { ReactElement, useContext } from "react";
+import { IToDo, IToDoContext } from "../interfaces/interfaces";
 import styles from "../css/ToDo.module.css";
+import { ToDoContext } from "../context/ToDoContext";
 
 interface IToDoProps {
   todo: IToDo;
-  handleToDoAction: (id: string, action: string) => void;
 }
 
-export default function ToDo({ todo, handleToDoAction }: IToDoProps): ReactElement {
+export default function ToDo({ todo }: IToDoProps): ReactElement {
+  const { toggleStatus, removeTodo, editTodo } = useContext(ToDoContext) as IToDoContext;
   const { creationDate, owner, id, title, isDone } = todo;
 
   return (
@@ -16,7 +17,7 @@ export default function ToDo({ todo, handleToDoAction }: IToDoProps): ReactEleme
         <h2 className={styles.todoTitle}>ToDo: {title}</h2>
         <span
           className={`material-symbols-outlined ${styles.deleteIcon}`}
-          onClick={() => handleToDoAction(id, "remove")}
+          onClick={() => removeTodo(id)}
         >
           close
         </span>
@@ -27,7 +28,7 @@ export default function ToDo({ todo, handleToDoAction }: IToDoProps): ReactEleme
         <div className={styles.todoStatus}>
           <span
             className={`material-symbols-outlined ${styles.checkboxIcon}`}
-            onClick={() => handleToDoAction(id, "toggleStatus")}
+            onClick={() => toggleStatus(id)}
           >
             {isDone ? "check_box" : "check_box_outline_blank"}
           </span>
@@ -35,7 +36,7 @@ export default function ToDo({ todo, handleToDoAction }: IToDoProps): ReactEleme
         </div>
         <span
           className={`material-symbols-outlined ${styles.editIcon}`}
-          onClick={() => handleToDoAction(id, "edit")}
+          onClick={() => editTodo && editTodo(id, { title, owner })}
         >
           edit
         </span>

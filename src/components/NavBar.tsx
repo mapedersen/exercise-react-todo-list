@@ -8,7 +8,6 @@ export default function NavBar(): ReactElement {
       <Link to={"/"}>Home</Link>
       <Link to={"/add-todo"}>Add ToDo</Link>
       <Link to={"/todos"}>ToDos</Link>
-      {/* <Link to={"/about"}>About</Link> */}
     </nav>
   );
 }
