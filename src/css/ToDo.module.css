@@ -12,9 +12,16 @@
   font-size: 1.2em;
 }
 
+.todoEditDelete {
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
 .todoTitleAndClose {
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .todoStatus {
@@ -24,7 +31,7 @@
 
 .todoOwner {
   margin-top: -2px;
-  font-size: 0.em;
+  font-size: 0em;
   color: #555;
 }
 
@@ -32,13 +39,20 @@
   margin-top: -2px;
   font-size: 0.8em;
   color: #555;
-  margin-bottom: 5px;
+  margin-bottom: 10px;
 }
 
 .todoStatusAndControl {
   display: flex;
   align-items: center;
   gap: 5px;
+  justify-content: space-between;
+}
+
+.todoStatus {
+  display: flex;
+  align-items: center;
+  gap: 3px;
 }
 
 .checkboxIcon {
@@ -74,5 +88,3 @@
 .completed .checkboxIcon:hover {
   color: red;
 }
-
-

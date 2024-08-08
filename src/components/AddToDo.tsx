@@ -1,16 +1,32 @@
-import { ReactElement, useState } from "react";
+import { ReactElement, useEffect, useState } from "react";
 import styles from "../css/AddToDo.module.css";
-import { useOutletContext } from "react-router-dom";
-import { IToDoContext } from "../interfaces";
+import { useNavigate, useOutletContext, useParams } from "react-router-dom";
+import { IToDoContext } from "../interfaces/interfaces";
 
 export default function AddToDo(): ReactElement {
-  const { handleAddToDo } = useOutletContext<IToDoContext>();
+  const { id } = useParams<{ id: string }>();
+  const navigate = useNavigate();
+  const { todos, handleAddToDo, handleToDoAction } = useOutletContext<IToDoContext>();
   const [formData, setFormData] = useState({ title: "", owner: "" });
+
+  useEffect(() => {
+    if (id) {
+      const todo = todos.find((todo) => todo.id === id);
+      if (todo) {
+        setFormData({ title: todo.title, owner: todo.owner });
+      }
+    }
+  }, [id, todos]);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    handleAddToDo(formData.title, formData.owner);
+    if (id) {
+      handleToDoAction(id, "edit", formData);
+    } else {
+      handleAddToDo(formData.title, formData.owner);
+    }
     resetTodoInput();
+    navigate("/todos");
   };
 
   const resetTodoInput = () => {
@@ -28,7 +44,7 @@ export default function AddToDo(): ReactElement {
   return (
     <form onSubmit={handleSubmit} id="form">
       <fieldset className={styles.todoFieldset}>
-        <legend>Add a new ToDo</legend>
+        <legend>{id ? "Edit ToDo" : "Add a new ToDo"}</legend>
         <div className={styles.inputWrapper}>
           <label htmlFor="titleInput" className={styles.formLabel}>
             ToDo
@@ -58,7 +74,7 @@ export default function AddToDo(): ReactElement {
           />
         </div>
         <button className={styles.addTodoButton} type="submit">
-          Add ToDo
+          {id ? "Update ToDo" : "Add ToDo"}
         </button>
       </fieldset>
     </form>

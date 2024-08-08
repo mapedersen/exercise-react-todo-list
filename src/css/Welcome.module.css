@@ -1,3 +1,21 @@
-.welcome {
+.About {
   margin-top: 20px;
+}
+
+.About h3 {
+  margin-top: 20px;
+  margin-bottom: 5px;
+  font-style: italic;
+  text-align: center;
+}
+
+.About li {
+  list-style: none;
+  text-align: center;
+}
+
+.amountOfTOdos {
+  margin-top: 10px;
+  text-align: center;
+  font-weight: bold;
 }

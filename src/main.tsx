@@ -25,13 +25,17 @@ const router = createBrowserRouter([
         element: <AddToDo />,
       },
       {
+        path: "edit-todo/:id",
+        element: <AddToDo />,
+      },
+      {
         path: "todos",
         element: <ToDoList />,
       },
-      {
-        path: "about",
-        element: <About />,
-      },
+      // {
+      //   path: "about",
+      //   element: <About />,
+      // },
     ],
   },
 ]);

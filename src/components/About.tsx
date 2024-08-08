@@ -1,14 +1,14 @@
 import { ReactElement } from "react";
 import styles from "../css/About.module.css";
 import { useOutletContext } from "react-router-dom";
-import { IToDoContext } from "../interfaces";
+import { IToDoContext } from "../interfaces/interfaces";
 
 export const About = (): ReactElement => {
   const { todos } = useOutletContext<IToDoContext>();
   return (
     <div className={styles.About}>
       <header>
-        <h2 className={styles.amountOfTOdos}>{`ToDos to do: ${todos.length}`}</h2>
+        <h3 className={styles.amountOfTOdos}>{`ToDos to do: ${todos.length}`}</h3>
       </header>
       <h3>Why use this App?</h3>
       <ul>

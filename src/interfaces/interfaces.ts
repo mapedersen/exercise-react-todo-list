@@ -9,5 +9,9 @@ export interface IToDo {
 export interface IToDoContext {
   todos: IToDo[];
   handleAddToDo: (title: string, owner: string) => void;
-  handleToDoAction: (id: string, action: string) => void;
+  handleToDoAction: (
+    id: string,
+    action: string,
+    updatedData?: { title: string; owner: string }
+  ) => void;
 }

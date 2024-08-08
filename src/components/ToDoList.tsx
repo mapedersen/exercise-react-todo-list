@@ -1,5 +1,5 @@
 import { ReactElement } from "react";
-import { IToDoContext } from "../interfaces";
+import { IToDoContext } from "../interfaces/interfaces";
 import ToDo from "./ToDo";
 import styles from "../css/ToDoList.module.css";
 import { useOutletContext } from "react-router-dom";
