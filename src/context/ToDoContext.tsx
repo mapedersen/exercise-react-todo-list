@@ -26,10 +26,12 @@ export function ToDoProvider({ children }: IToDoProviderProps): ReactElement {
 
     setToDos((prevTodos) => {
       const updatedTodos = [...prevTodos, newToDo];
-      return updatedTodos.sort(
-        (a, b) =>
-          Number(a.isDone) - Number(b.isDone) || a.creationDate.getTime() + b.creationDate.getTime()
-      );
+      return updatedTodos.sort((a, b) => {
+        if (Number(a.isDone) !== Number(b.isDone)) {
+          return Number(a.isDone) - Number(b.isDone);
+        }
+        return b.creationDate.getTime() - a.creationDate.getTime();
+      });
     });
   };
 
