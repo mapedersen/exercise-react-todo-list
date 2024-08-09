@@ -4,7 +4,7 @@ import styles from "../css/DropDown.module.css";
 import { ToDoContext } from "../context/ToDoContext";
 import { IToDoContext } from "../interfaces/interfaces";
 
-export function DropDown(): ReactElement {
+export function FilterDropDown(): ReactElement {
   const { filterChoice, setFilterChoice } = useContext(ToDoContext) as IToDoContext;
 
   const handleSelect = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -16,7 +16,7 @@ export function DropDown(): ReactElement {
     <div>
       <p className={styles.filterText}>Filter by:</p>
       <select value={filterChoice} onChange={handleSelect}>
-        <option value="timestamp">Timestamp</option>
+        <option value="Timestamp">Timestamp</option>
         <option value="Owner">Owner</option>
       </select>
     </div>

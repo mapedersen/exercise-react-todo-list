@@ -93,7 +93,7 @@ export function ToDoProvider({ children }: IToDoProviderProps): ReactElement {
   };
 
   const contextValue: IToDoContext = {
-    todos: filterTodos(todos),
+    todos: todos,
     addToDo,
     toggleStatus,
     removeTodo,
