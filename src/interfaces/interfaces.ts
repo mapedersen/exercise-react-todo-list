@@ -14,4 +14,5 @@ export interface IToDoContext {
   toggleStatus: (id: string) => void;
   filterChoice: string;
   setFilterChoice: (choice: string) => void;
+  moveTodo: (id: string, direction: "up" | "down") => void;
 }

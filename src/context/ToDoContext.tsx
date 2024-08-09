@@ -67,6 +67,31 @@ export function ToDoProvider({ children }: IToDoProviderProps): ReactElement {
     }
   };
 
+  const moveTodo = (id: string, direction: "up" | "down") => {
+    setToDos((prevTodos) => {
+      const index = prevTodos.findIndex((todo) => todo.id === id);
+      if (index === -1) return prevTodos; // id not found
+
+      const newTodos = [...prevTodos]; // Create a copy of the todos array
+
+      // Perform boundary checks and adjust position
+      if (direction === "up" && index > 0) {
+        // Move item up
+        const [movedTodo] = newTodos.splice(index, 1); // Remove the todo from the list
+        newTodos.splice(index - 1, 0, movedTodo); // Insert the todo at the new position
+      } else if (direction === "down" && index < newTodos.length - 1) {
+        // Move item down
+        const [movedTodo] = newTodos.splice(index, 1); // Remove the todo from the list
+        newTodos.splice(index + 1, 0, movedTodo); // Insert the todo at the new position
+      } else {
+        // If no valid move is possible, return the array unchanged
+        return prevTodos;
+      }
+
+      return newTodos; // Return the updated list without sorting
+    });
+  };
+
   const contextValue: IToDoContext = {
     todos: filterTodos(todos),
     addToDo,
@@ -75,6 +100,7 @@ export function ToDoProvider({ children }: IToDoProviderProps): ReactElement {
     editTodo,
     setFilterChoice,
     filterChoice,
+    moveTodo,
   };
 
   return <ToDoContext.Provider value={contextValue}>{children}</ToDoContext.Provider>;

@@ -1,0 +1,28 @@
+.todoButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.todoButtons span {
+  font-size: 1.4rem;
+}
+
+.deleteIcon {
+  cursor: pointer;
+  transition: color 0.3s ease;
+}
+
+.deleteIcon:hover {
+  color: red;
+}
+
+.editIcon:hover {
+  cursor: pointer;
+  color: orange;
+}
+
+.moveIcon:hover {
+  cursor: pointer;
+  color: rgb(224, 35, 168);
+}
