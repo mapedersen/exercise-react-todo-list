@@ -2,7 +2,6 @@ import { createContext, ReactElement, ReactNode, useState } from "react";
 import { IToDo, IToDoContext } from "../interfaces/interfaces";
 import { ToDos } from "../data/data";
 import uuid4 from "uuid4";
-import { useNavigate } from "react-router-dom";
 
 interface IToDoProviderProps {
   children: ReactNode;
@@ -12,8 +11,7 @@ export const ToDoContext = createContext<IToDoContext | undefined>(undefined);
 
 export function ToDoProvider({ children }: IToDoProviderProps): ReactElement {
   const [todos, setToDos] = useState<IToDo[]>(ToDos);
-
-  const navigate = useNavigate();
+  const [filterChoice, setFilterChoice] = useState<string>("Timestamp");
 
   const addToDo = (todoTitle: string, todoOwner: string) => {
     const newToDo: IToDo = {
@@ -44,7 +42,6 @@ export function ToDoProvider({ children }: IToDoProviderProps): ReactElement {
   };
 
   const editTodo = (id: string, updatedData: { title: string; owner: string }) => {
-    navigate(`/edit-todo/${id}`);
     setToDos((prevTodos) =>
       prevTodos.map((todo) => (todo.id === id ? { ...todo, ...updatedData } : todo))
     );
@@ -59,12 +56,25 @@ export function ToDoProvider({ children }: IToDoProviderProps): ReactElement {
     });
   };
 
+  const filterTodos = (todos: IToDo[]): IToDo[] => {
+    switch (filterChoice) {
+      case "Timestamp":
+        return sortTodos(todos);
+      case "Owner":
+        return todos.sort((a, b) => a.owner.localeCompare(b.owner));
+      default:
+        return todos;
+    }
+  };
+
   const contextValue: IToDoContext = {
-    todos,
+    todos: filterTodos(todos),
     addToDo,
     toggleStatus,
     removeTodo,
     editTodo,
+    setFilterChoice,
+    filterChoice,
   };
 
   return <ToDoContext.Provider value={contextValue}>{children}</ToDoContext.Provider>;

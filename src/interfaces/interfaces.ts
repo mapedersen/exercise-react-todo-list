@@ -12,4 +12,6 @@ export interface IToDoContext {
   removeTodo: (id: string) => void;
   editTodo: (id: string, updatedData: { title: string; owner: string }) => void;
   toggleStatus: (id: string) => void;
+  filterChoice: string;
+  setFilterChoice: (choice: string) => void;
 }

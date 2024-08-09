@@ -2,13 +2,15 @@ import { ReactElement, useContext } from "react";
 import { IToDo, IToDoContext } from "../interfaces/interfaces";
 import styles from "../css/ToDo.module.css";
 import { ToDoContext } from "../context/ToDoContext";
+import { useNavigate } from "react-router-dom";
 
 interface IToDoProps {
   todo: IToDo;
 }
 
 export default function ToDo({ todo }: IToDoProps): ReactElement {
-  const { toggleStatus, removeTodo, editTodo } = useContext(ToDoContext) as IToDoContext;
+  const { toggleStatus, removeTodo } = useContext(ToDoContext) as IToDoContext;
+  const navigate = useNavigate();
   const { creationDate, owner, id, title, isDone } = todo;
 
   return (
@@ -36,7 +38,7 @@ export default function ToDo({ todo }: IToDoProps): ReactElement {
         </div>
         <span
           className={`material-symbols-outlined ${styles.editIcon}`}
-          onClick={() => editTodo && editTodo(id, { title, owner })}
+          onClick={() => navigate(`/edit-todo/${id}`)}
         >
           edit
         </span>

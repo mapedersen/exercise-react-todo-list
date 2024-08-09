@@ -4,6 +4,7 @@ import { ToDoContext } from "../context/ToDoContext";
 
 import ToDo from "./ToDo";
 import styles from "../css/ToDoList.module.css";
+import { DropDown } from "./DropDown";
 
 export default function ToDoList(): ReactElement {
   const { todos } = useContext(ToDoContext) as IToDoContext;
@@ -12,7 +13,7 @@ export default function ToDoList(): ReactElement {
     <section className={styles.todoListContainer}>
       <header className={styles.todoListHeader}>
         <h2>ToDos:</h2>
-        <span className="material-symbols-outlined">filter_list</span>
+        <DropDown />
       </header>
       <ul className={styles.todoList}>
         {todos.map((todo) => (
